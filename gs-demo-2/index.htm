@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Spritesheet Demo</title>
+    <meta charset="utf-8" />
+    <style>
+      body{
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+      .landscape {
+        background-image: url('img/woods.jpg');
+        background-position:  -320px -950px;
+        background-attachment: scroll;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      .figure {
+        height: 150px;
+        width: 100px;
+        background-image: url('img/kimsprite.png');
+        background-attachment: scroll;
+        background-color: yellow;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: -20px 0;
+        position: relative;
+        bottom: -191px;
+        left: 90px;
+      }
+      .figure.run {
+        background-position: -20px 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="landscape" class="landscape">
+      <article id="figure" class="figure">
+      </article>
+    </div>
+    <script type="text/javascript">
+    (function(){
+      var landscape = document.getElementById('landscape');
+      var myChar = document.getElementById('figure');
+      myChar.style.left = "90px";
+      var pos;
+      var newPos;
+      document.addEventListener("keydown", function(e){
+         console.log("keycode: " + e.keyCode);
+         if (e.keyCode === 37){
+          console.log("go left");
+          pos = parseInt(myChar.style.left, 10);
+          myChar.style.left = (pos - 20) + "px";
+         }
+         else if (e.keyCode === 39){
+          console.log("go right");
+          pos = parseInt(myChar.style.left, 10);
+          myChar.style.left = (pos + 20) + "px";
+         }
+      });
+     })();
+    </script>
+  </body>
+</html>
